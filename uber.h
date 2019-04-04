@@ -1,20 +1,20 @@
 #ifndef UBER_H
 #define UBER_H
+#include <iostream>
 #include <string>
+
 using std::string;
+using std::cout;
 
 class uber
 {
+    
 public:
     uber(string formaDePagamento);
-    {
-        setCoursePagamento (formaDePagamento);
-    }
+    ~uber();
     
-    void setCoursePagamento ( string formaDePagamento)
-    {
-        coursePagamento = formaDePagamento;
-    }
+   void setescolherFormaDePagamento (string);
+   
 private:
     string formaDePagamento;
     
