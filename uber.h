@@ -11,10 +11,12 @@ class uber
 {
     
 public:
+    uber();
     uber(string formaDePagamento);
     ~uber();
     
-   void setescolherFormaDePagamento (string);
+    void setescolherFormaDePagamento();
+    void setescolherFormaDePagamento (const string &);
    
 private:
     string formaDePagamento;
