@@ -1,4 +1,5 @@
 #include "uber.h"
+string pagamento;
 uber::uber()
 {
     setescolherFormaDePagamento();
@@ -16,7 +17,7 @@ uber::~uber()
 
 void uber::setescolherFormaDePagamento()
 {
-    cout << "Nenhuma opcao escolhida\n";
+    pagamento =  "Nenhuma opcao escolhida\n";
 }
 
 
@@ -25,9 +26,9 @@ void uber::setescolherFormaDePagamento( const string &formaDePagamentos)
     
     if (formaDePagamentos == "D")
     {
-        cout <<"Pagamento em Dinheiro\n";
+        pagamento = "Pagamento em Dinheiro\n";
     } else if (formaDePagamentos == "C") {
-        cout <<"Pagamento em Cartao\n";
+        pagamento = "Pagamento em Cartao\n";
     }
 }
 

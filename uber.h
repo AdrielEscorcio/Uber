@@ -17,10 +17,13 @@ public:
     
     void setescolherFormaDePagamento();
     void setescolherFormaDePagamento (const string &);
+    
+    
    
 private:
     string formaDePagamento;
-    
+    static int quantViagensFeitas;
+    const static int valorMinimoDeViagem;
 };
 
 #endif // UBER_H
