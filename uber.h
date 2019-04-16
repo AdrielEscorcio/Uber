@@ -11,19 +11,28 @@ class uber
 {
     
 public:
-    uber();
-    uber(string formaDePagamento);
-    ~uber();
-    
-    void setescolherFormaDePagamento();
-    void setescolherFormaDePagamento (const string &);
+    uber(int ,const string &, const string &);
     
     
+    void setescolherFormaDePagamento(int);
+    
+    void setinserirLocalDePartida(const string &) const;
+    
+    void setinserirLocalDeDestino(const string &) const; 
+    
+    void setvalorMinimoCobradoPorViagem() const;
+
+   	static int  getnumeroDeViagens();
    
 private:
-    string formaDePagamento;
-    static int quantViagensFeitas;
-    const static int valorMinimoDeViagem;
+    
+	int  formaDePagamento;
+    const string localDeDestino;
+    const string localDePartida;
+    
+    static int quantViagens;
+    
+    const static int valorMinimoDeViagem = 5.00;
 };
 
 #endif // UBER_H

@@ -1,34 +1,49 @@
 #include "uber.h"
-string pagamento;
-uber::uber()
+
+int uber::quantViagens = 0;
+
+uber::uber(int formaDePagamento, const string &localDePartida, const string &localDeDestino)
 {
-    setescolherFormaDePagamento();
-}
-uber::uber(string formaDePagamentos)
-{
-    setescolherFormaDePagamento (formaDePagamentos);
+    setescolherFormaDePagamento (formaDePagamento);
+    setinserirLocalDePartida(localDePartida);
+    setinserirLocalDeDestino(localDeDestino);
+    
+    quantViagens++;
     
 }
 
-uber::~uber()
+void uber::setescolherFormaDePagamento(int verificandoFormaDePagamento)
 {
-    
-}
-
-void uber::setescolherFormaDePagamento()
-{
-    pagamento =  "Nenhuma opcao escolhida\n";
-}
-
-
-void uber::setescolherFormaDePagamento( const string &formaDePagamentos)
-{
-    
-    if (formaDePagamentos == "D")
+    cout << "\n\nINFORMCAOES DA VIAGEM " << quantViagens+1;
+    if (verificandoFormaDePagamento == 1)
     {
-        pagamento = "Pagamento em Dinheiro\n";
-    } else if (formaDePagamentos == "C") {
-        pagamento = "Pagamento em Cartao\n";
-    }
+        cout <<"\n\nPagamento em Dinheiro\n";
+    } else if (verificandoFormaDePagamento == 2) {
+        cout <<"\n\nPagamento em Cartao Credito\n";
+    	} else if (verificandoFormaDePagamento == 3)
+		{
+    		cout <<"\n\nPagamento em Cartao Debito\n";
+			} else {
+				cout <<"\n\n Opcao de pagamento invalida\n";
+			}
 }
 
+void uber::setinserirLocalDePartida(const string &Partida) const
+{
+	cout <<"Local De Partida Escolhido: " << Partida;;
+}
+
+void uber::setinserirLocalDeDestino(const string &Destino) const
+{
+	cout << "\nLocal de Destino Escolhido: " << Destino;
+}
+
+void uber::setvalorMinimoCobradoPorViagem() const
+{
+	cout << "\n\nValor Minimo cobrado por viagem: R$ " << valorMinimoDeViagem;
+}
+
+int uber::getnumeroDeViagens()
+{
+	return quantViagens;
+}
