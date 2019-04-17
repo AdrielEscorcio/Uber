@@ -1,36 +1,43 @@
-#include "uber.h"
+#include "uber.h"	
 
 int uber::quantViagens = 0;
 
-uber::uber(int formaDePagamento, const string &localDePartida, const string &localDeDestino)
+uber::uber(const string &localDePartida, const string &localDeDestino)
 {
-    setescolherFormaDePagamento (formaDePagamento);
+    setinicializarFormaDePagamento();
     setinserirLocalDePartida(localDePartida);
     setinserirLocalDeDestino(localDeDestino);
+    mostarFormaPagamento();
     
     quantViagens++;
     
 }
+//string pag[] = {"Dinheiro", "Cartao Credito", "Debito"};
 
-void uber::setescolherFormaDePagamento(int verificandoFormaDePagamento)
+void uber::setinicializarFormaDePagamento()
 {
-    cout << "\n\nINFORMCAOES DA VIAGEM " << quantViagens+1;
-    if (verificandoFormaDePagamento == 1)
+    for (int i = 0; i < quantFormaPagamento; i++ )
     {
-        cout <<"\n\nPagamento em Dinheiro\n";
-    } else if (verificandoFormaDePagamento == 2) {
-        cout <<"\n\nPagamento em Cartao Credito\n";
-    	} else if (verificandoFormaDePagamento == 3)
+    	
+    	if (i == 0)
+    	{
+    		pag[i] = "Dinheiro";
+		}
+		if (i == 1)
 		{
-    		cout <<"\n\nPagamento em Cartao Debito\n";
-			} else {
-				cout <<"\n\n Opcao de pagamento invalida\n";
-			}
+			pag[i] = "Cartao Credito";
+		}
+		if(i == 2)
+		{
+			pag[i] = "Cartao Debito";
+		}
+	}
 }
 
 void uber::setinserirLocalDePartida(const string &Partida) const
 {
-	cout <<"Local De Partida Escolhido: " << Partida;;
+	cout <<"\n\nINFORMACOES DA VIAGEM";
+	cout <<"\nLocal De Partida Escolhido: " << Partida;;
 }
 
 void uber::setinserirLocalDeDestino(const string &Destino) const
@@ -40,7 +47,26 @@ void uber::setinserirLocalDeDestino(const string &Destino) const
 
 void uber::setvalorMinimoCobradoPorViagem() const
 {
-	cout << "\n\nValor Minimo cobrado por viagem: R$ " << valorMinimoDeViagem;
+	cout << "\nValor Minimo cobrado por viagem: R$ " << valorMinimoDeViagem;
+}
+
+void uber::mostarFormaPagamento() const
+{
+	cout << "\n Entre com a forma de Pagamento\n";
+	for(int i=0; i < 3; i++)
+		cout<< "["<<i+1<<"]"<<pag[i] << "\n";
+	
+}
+
+void uber::setescolherFormaDePagamento(int formaDePagamento)
+{
+    for (int i = 0; i < quantFormaPagamento; i++ )
+    {
+    	if (i == formaDePagamento-1)
+    	{
+    		cout <<"Forma de Pagamento:"<<pag[i];
+    	}
+	}
 }
 
 int uber::getnumeroDeViagens()
