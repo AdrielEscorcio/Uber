@@ -96,5 +96,7 @@
     <File Name="main.cpp"/>
     <File Name="uber.h"/>
     <File Name="uber.cpp"/>
+    <File Name="motorista.cpp"/>
+    <File Name="motorista.h"/>
   </VirtualDirectory>
 </CodeLite_Project>

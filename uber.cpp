@@ -1,8 +1,8 @@
-#include "uber.h"	
+#include "uber.h"
 
-int uber::quantViagens = 0;
+int Uber::quantViagens = 0;
 
-uber::uber(const string &localDePartida, const string &localDeDestino)
+Uber::Uber(const string &localDePartida, const string &localDeDestino)
 {
     setinicializarFormaDePagamento();
     setinserirLocalDePartida(localDePartida);
@@ -14,7 +14,7 @@ uber::uber(const string &localDePartida, const string &localDeDestino)
 }
 //string pag[] = {"Dinheiro", "Cartao Credito", "Debito"};
 
-void uber::setinicializarFormaDePagamento()
+void Uber::setinicializarFormaDePagamento()
 {
     for (int i = 0; i < quantFormaPagamento; i++ )
     {
@@ -34,23 +34,23 @@ void uber::setinicializarFormaDePagamento()
 	}
 }
 
-void uber::setinserirLocalDePartida(const string &Partida) const
+void Uber::setinserirLocalDePartida(const string &Partida) const
 {
 	cout <<"\n\nINFORMACOES DA VIAGEM";
 	cout <<"\nLocal De Partida Escolhido: " << Partida;;
 }
 
-void uber::setinserirLocalDeDestino(const string &Destino) const
+void Uber::setinserirLocalDeDestino(const string &Destino) const
 {
 	cout << "\nLocal de Destino Escolhido: " << Destino;
 }
 
-void uber::setvalorMinimoCobradoPorViagem() const
+void Uber::setvalorMinimoCobradoPorViagem() const
 {
 	cout << "\nValor Minimo cobrado por viagem: R$ " << valorMinimoDeViagem;
 }
 
-void uber::mostarFormaPagamento() const
+void Uber::mostarFormaPagamento() const
 {
 	cout << "\n Entre com a forma de Pagamento\n";
 	for(int i=0; i < 3; i++)
@@ -58,7 +58,7 @@ void uber::mostarFormaPagamento() const
 	
 }
 
-void uber::setescolherFormaDePagamento(int formaDePagamento)
+void Uber::setescolherFormaDePagamento(int formaDePagamento)
 {
     for (int i = 0; i < quantFormaPagamento; i++ )
     {
@@ -69,7 +69,13 @@ void uber::setescolherFormaDePagamento(int formaDePagamento)
 	}
 }
 
-int uber::getnumeroDeViagens()
+int Uber::getnumeroDeViagens()
 {
 	return quantViagens;
+}
+
+void Uber::ostrarIformacaoMotorista () 
+{
+    cout << "Informacoes do Motorista\n";
+    inforMotorista.mostrarIformacaoMotorista();
 }

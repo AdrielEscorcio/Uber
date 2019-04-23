@@ -4,17 +4,17 @@
 #include <iostream>
 #include <string>
 
-#include "motoristas.h"
+#include "Motorista.h"
 
 using std::string;
 using std::cout;
 using std::cin;
 
-class uber
+class Uber
 {
     
 public:
-    uber(const string &, const string &);
+    Uber(const string &, const string &);
     
     
     void setinicializarFormaDePagamento();
@@ -30,6 +30,9 @@ public:
     void setvalorMinimoCobradoPorViagem() const;
 
    	static int  getnumeroDeViagens();
+    
+    void ostrarIformacaoMotorista();
+    
    
 private:
     
@@ -42,8 +45,9 @@ private:
     const static int valorMinimoDeViagem = 5.00;
     
     const static int quantFormaPagamento = 3;
-    const string pag[quantFormaPagamento];
+    string pag[quantFormaPagamento];
     
+     Motorista inforMotorista;
 };
 
 #endif // UBER_H
