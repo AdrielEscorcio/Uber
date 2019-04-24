@@ -2,7 +2,7 @@
 
 int Uber::quantViagens = 0;
 
-Uber::Uber(const string &localDePartida, const string &localDeDestino)
+Uber::Uber(const string *localDePartida, const string *localDeDestino)
 {
     setinicializarFormaDePagamento();
     setinserirLocalDePartida(localDePartida);
@@ -11,6 +11,7 @@ Uber::Uber(const string &localDePartida, const string &localDeDestino)
     
     quantViagens++;
     
+    cout << "Pont: "<< this->quantFormaPagamento;
 }
 //string pag[] = {"Dinheiro", "Cartao Credito", "Debito"};
 
@@ -34,13 +35,13 @@ void Uber::setinicializarFormaDePagamento()
 	}
 }
 
-void Uber::setinserirLocalDePartida(const string &Partida) const
+void Uber::setinserirLocalDePartida(const string *Partida) const
 {
 	cout <<"\n\nINFORMACOES DA VIAGEM";
 	cout <<"\nLocal De Partida Escolhido: " << Partida;;
 }
 
-void Uber::setinserirLocalDeDestino(const string &Destino) const
+void Uber::setinserirLocalDeDestino(const string *Destino) const
 {
 	cout << "\nLocal de Destino Escolhido: " << Destino;
 }

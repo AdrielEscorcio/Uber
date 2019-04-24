@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	cin >> d;
 	
 	
-	Uber uber1(p,d);
+	Uber uber1(&p,&d);
 	cin >> pagamento;
 	uber1.setescolherFormaDePagamento(pagamento);
 	uber1.setvalorMinimoCobradoPorViagem();
@@ -21,11 +21,14 @@ int main(int argc, char **argv)
 	cout << "\n\nEscolhe o Tipo De Uber\n";
 	cout << "[1] Uber x\n";
 	cout << "[2] Uber Select\n";
-	cin >> tipo;
+	cin >> setipo;
 	uber1.tipo(setipo);
 	
     uber1.mostrarInformacaoMotorista();
     
+    Uber *ptruber = &uber1;
+    
+    ptruber->setescolherFormaDePagamento(pagamento);
 /*	Uber uber2("Canudos","Guama");
 	cin >> pagamento;
 	uber2.setescolherFormaDePagamento(pagamento);

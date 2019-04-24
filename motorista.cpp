@@ -17,6 +17,6 @@ void Motorista::mostrarIformacaoMotorista()
     numeroPlaca = "ADF-8856";
     
     cout << "\nNome:"<<nome;
-    cout << "\nPlaca:"<<numeroPlaca;
+    cout << "\nPlaca:"<<numeroPlaca<<"\n";
     
 }

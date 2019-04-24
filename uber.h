@@ -15,7 +15,7 @@ class Uber
 {
     
 public:
-    Uber(const string &, const string &);
+    Uber(const string *, const string *);
     
     
     void setinicializarFormaDePagamento();
@@ -24,9 +24,9 @@ public:
     
     void mostarFormaPagamento() const;
     
-    void setinserirLocalDePartida(const string &) const;
+    void setinserirLocalDePartida(const string *) const;
     
-    void setinserirLocalDeDestino(const string &) const; 
+    void setinserirLocalDeDestino(const string *) const; 
     
     void setvalorMinimoCobradoPorViagem() const;
 
