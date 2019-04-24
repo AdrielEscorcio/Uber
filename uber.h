@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Motorista.h"
+#include "TipoCarro.h"
 
 using std::string;
 using std::cout;
@@ -31,7 +32,8 @@ public:
 
    	static int  getnumeroDeViagens();
     
-    void ostrarIformacaoMotorista();
+    void mostrarInformacaoMotorista();
+    void tipo(int);
     
    
 private:
@@ -47,7 +49,8 @@ private:
     const static int quantFormaPagamento = 3;
     string pag[quantFormaPagamento];
     
-     Motorista inforMotorista;
+    Motorista inforMotorista;
+    TipoCarro selecionarTipo;
 };
 
 #endif // UBER_H

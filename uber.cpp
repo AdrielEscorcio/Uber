@@ -52,7 +52,7 @@ void Uber::setvalorMinimoCobradoPorViagem() const
 
 void Uber::mostarFormaPagamento() const
 {
-	cout << "\n Entre com a forma de Pagamento\n";
+	cout << "\n\nEntre com a forma de Pagamento\n";
 	for(int i=0; i < 3; i++)
 		cout<< "["<<i+1<<"]"<<pag[i] << "\n";
 	
@@ -74,8 +74,13 @@ int Uber::getnumeroDeViagens()
 	return quantViagens;
 }
 
-void Uber::ostrarIformacaoMotorista () 
+void Uber::mostrarInformacaoMotorista () 
 {
-    cout << "Informacoes do Motorista\n";
+    cout << "\n\nInformacoes do Motorista";
     inforMotorista.mostrarIformacaoMotorista();
+}
+
+void Uber::tipo(int car)
+{
+	selecionarTipo.escolherCarro(car);
 }
