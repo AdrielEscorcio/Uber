@@ -1,41 +1,53 @@
-#include "uber.h"
+#include "Uber.h"
 
-
-int main(int argc, char **argv)
-{
-	string p, d;
-	int pagamento, setipo;
-	
+int main(int argc, char** argv) {
+	string p,d;
+	int pag, apagar, sex, tipo;
 	
 	cout << "Entre Local De Partida:";
 	cin >> p;
 	cout << "Entre Local De Destino:";
 	cin >> d;
 	
+	Uber ub1, ub2(p,d), ub3(ub2);
 	
-	Uber uber1(&p,&d);
-	cin >> pagamento;
-	uber1.setescolherFormaDePagamento(pagamento);
-	uber1.setvalorMinimoCobradoPorViagem();
+
 	
-	cout << "\n\nEscolhe o Tipo De Uber\n";
-	cout << "[1] Uber x\n";
-	cout << "[2] Uber Select\n";
-	cin >> setipo;
-	uber1.tipo(setipo);
+	ub2.setinserirLocalDePartida();
+	ub2.setinserirLocalDeDestino();
+	ub2.mostarFormaPagamento();
+	cin >> pag;
+	ub2.setescolherFormaDePagamento(pag);
+	ub2.setvalorMinimoCobradoPorViagem();
+	ub2.mostarTipo();
+	cin >> tipo;
+	ub2.tipo(tipo);
+	ub2.mostrarInformacaoTipo();
+	ub2.mostarSexoMotorista();
+	cin >> sex;
+	ub2.setescolherSexoMotorista(sex);
+	ub2.mostrarInformacaoMotorista();
+	cout << "\nDigite 1 pra finalizar.";
+	cin >> apagar;
+	system("cls");
 	
-    uber1.mostrarInformacaoMotorista();
-    
-    Uber *ptruber = &uber1;
-    
-    ptruber->setescolherFormaDePagamento(pagamento);
-/*	Uber uber2("Canudos","Guama");
-	cin >> pagamento;
-	uber2.setescolherFormaDePagamento(pagamento);
-	uber2.setvalorMinimoCobradoPorViagem();
-	uber2.mostrarInformacaoMotorista();*/
-    
-    cout << "\n\nQuantidade de Viagens Realizadas:"<< uber1.getnumeroDeViagens();
-    
+	ub1.setinserirLocalDePartida();
+	ub1.setinserirLocalDeDestino();
+	cout << "\nDigite 1 pra finalizar.";
+	cin >> apagar;
+	system("cls");
+	
+	ub3.setinserirLocalDePartida();
+	ub3.setinserirLocalDeDestino();
+	ub3.mostarFormaPagamento();
+	cin >> pag;
+	ub3.setescolherFormaDePagamento(pag);
+	ub3.setvalorMinimoCobradoPorViagem();
+	ub3.mostrarInformacaoMotorista();
+	cout << "\nDigite 1 pra finalizar.";
+	cin >> apagar;
+	system("cls");	
+	
+	ub3.getnumeroDeViagens();
 	return 0;
 }
