@@ -4,12 +4,12 @@ Motorista::Motorista()
 {
 	this->nome = "Motorista Padrao";
     this->numeroPlaca = "ABC1234";
-    setinicializarSexoMotorista();
+    
 }
 
-Motorista::Motorista(const string &sex)
+Motorista::Motorista(const string &nome, const string &placa)
 {
-	setinicializarSexoMotorista();
+	
 }
 
 Motorista::Motorista(const Motorista &mot)
@@ -23,39 +23,25 @@ Motorista::~Motorista()
 	
 }
 
-void Motorista::setinicializarSexoMotorista()
-{
-    for (int i = 0; i < sexoMotorista; i++ )
-    {
-    	
-    	if (i == 0)
-    	{
-    		sexoMot[i] = "Homem";
-		}
-		if (i == 1)
-		{
-			sexoMot[i] = "Mulher";
-		}
-	}
-}
+const string Motorista::sexoMot[sexoMotorista] = {"Homem","Mulher"};
 
-void Motorista::mostarSexoMotorista() const
+void Motorista::mostrarSexoMotorista() const
 {
-	cout << "\n\nEntre com o Sexo do Motorista que voce deseja\n";
+	cout << "       Entre com o Sexo do Motorista que voce deseja\n\n";
 	for(int i=0; i < sexoMotorista; i++)
 		cout<< "["<<i+1<<"]"<<sexoMot[i] << "\n";
 	
 }
 
-void Motorista::setescolherSexoMotorista(int escolher)
+void Motorista::setescolherSexoMotorista(int *escolher)
 {
 
-    	if (1 == escolher)
+    	if (1 == *escolher)
     	{
     		this->nome = "MotoristaHomem";
     		this->numeroPlaca = "ABC1234";
     	}
-    	if (2 == escolher)
+    	if (2 == *escolher)
     	{
     		this->nome = "MotoristaMulher";
     		this->numeroPlaca = "ABC1234";
@@ -68,4 +54,9 @@ void Motorista::mostrarIformacaoMotorista() const
     cout << "\nNome:"<<this->nome;
     cout << "\nPlaca:"<<this->numeroPlaca<<"\n";
     
+}
+
+void Motorista::info() const
+{
+	cout << "Mostra, recebe e seleciona o Motorista\n\n";
 }

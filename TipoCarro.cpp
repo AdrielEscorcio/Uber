@@ -3,7 +3,12 @@
 TipoCarro::TipoCarro()
 {
 	this->tipoUber = "Uber Padrão";
-	setinicializartipo();
+	
+}
+TipoCarro::TipoCarro(const string &tipo)
+{
+	
+	
 }
 TipoCarro::TipoCarro(const TipoCarro &tip)
 {
@@ -13,43 +18,35 @@ TipoCarro::~TipoCarro()
 {
 	
 }
-void TipoCarro::setinicializartipo()
-{
-    for (int i = 0; i < quantTipo; i++ )
-    {
-    	
-    	if (i == 0)
-    	{
-    		tipos[i] = "Uber x";
-		}
-		if (i == 1)
-		{
-			tipos[i] = "Uber Select";
-		}
-		
-	}
-}
+
+const string TipoCarro::tipos[quantTipo] = {"Uber x","Uber Select"};
 
 void TipoCarro::mostrarTipo() const
 {
-	cout << "\n\nSelecione o Tipo de Uber\n";
+	cout << "       Selecione o Tipo de Uber\n\n";
 	for(int i=0; i < quantTipo; i++)
 		cout<< "["<<i+1<<"]"<<tipos[i] << "\n";
 }
 
-void TipoCarro::tipo (int escolhe)
+void TipoCarro::tipo (int *escolhe)
 {
-	if (1 == escolhe)
+	
+	for (int i = 0; i < quantTipo; i++)
 	{
-		this->tipoUber = "Uber x";
-	}
-	if (2 == escolhe)
-	{
-		this->tipoUber = "Uber Select";
+		if (i == *escolhe-1)
+		{
+			this->tipoUber = tipos[i];
+		}
+		
 	}
 }
 
 void TipoCarro::mostrarInformacaoTipo ()  const
 {
     cout << "\nTipo:" << this->tipoUber;
+}
+
+void TipoCarro::info() const
+{
+	cout << "Mostra e recebe e selciona o Tipo de Uber\n\n";
 }

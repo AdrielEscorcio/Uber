@@ -14,19 +14,20 @@ class TipoCarro
 {
 	public:
 		TipoCarro();
+		TipoCarro(const string &);
 		TipoCarro(const TipoCarro &);
 		~TipoCarro();
 		
-		void setinicializartipo();
 		void mostrarTipo() const;
-		void tipo (int);
+		void tipo (int*);
 		void mostrarInformacaoTipo() const;
+		void info() const;
 		
 	private:
 		string tipoUber;
 		
 		const static int quantTipo = 2;
-    	string tipos[quantTipo];
+    	const static string tipos[quantTipo];
 };
 
 #endif

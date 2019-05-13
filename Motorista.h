@@ -13,24 +13,24 @@ class Motorista
 {
 	public:
 		Motorista();
-		Motorista(const string &);
+		Motorista(const string &,const string &);
 		Motorista(const Motorista &);
 		~Motorista();
 		
-		void setinicializarSexoMotorista();
+		void mostrarSexoMotorista() const;
 		
-		void mostarSexoMotorista() const;
-		
-		void setescolherSexoMotorista(int escolherSex);
+		void setescolherSexoMotorista(int*);
 		
 		void mostrarIformacaoMotorista() const;
+		
+		void info() const;
 	private:
 		
 		string nome;
     	string numeroPlaca;
     	
     	const static int sexoMotorista = 2;
-    			string sexoMot[sexoMotorista];
+    	const static string sexoMot[sexoMotorista];
 };
 
 #endif

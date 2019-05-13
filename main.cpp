@@ -2,52 +2,90 @@
 
 int main(int argc, char** argv) {
 	string p,d;
-	int pag, apagar, sex, tipo;
+	int pag, apagar, sex, tipo, viagem = 0, verviagens = 0;
+	int tempo = clock();
+	Uber *uberPtr;
+	uberPtr = new Uber;
 	
-	cout << "Entre Local De Partida:";
-	cin >> p;
-	cout << "Entre Local De Destino:";
-	cin >> d;
 	
-	Uber ub1, ub2(p,d), ub3(ub2);
+	cout << "\n\n\n\n\n\n\n                  CARREGANDO...\n\n\n\n\n\n\n";
+	while(clock() - tempo < 6000){ 
+	}
+	system("cls");
 	
+	cout << "\n\n\n\n\n\n\n                 BEM VINDO A UBER\n\n\n\n\n\n\n";
 
-	
-	ub2.setinserirLocalDePartida();
-	ub2.setinserirLocalDeDestino();
-	ub2.mostarFormaPagamento();
-	cin >> pag;
-	ub2.setescolherFormaDePagamento(pag);
-	ub2.setvalorMinimoCobradoPorViagem();
-	ub2.mostarTipo();
-	cin >> tipo;
-	ub2.tipo(tipo);
-	ub2.mostrarInformacaoTipo();
-	ub2.mostarSexoMotorista();
-	cin >> sex;
-	ub2.setescolherSexoMotorista(sex);
-	ub2.mostrarInformacaoMotorista();
-	cout << "\nDigite 1 pra finalizar.";
-	cin >> apagar;
+	cout << "\n\n         Digite 1 pra realizar sua viagem.\n";
+	cin >> viagem;
 	system("cls");
 	
-	ub1.setinserirLocalDePartida();
-	ub1.setinserirLocalDeDestino();
-	cout << "\nDigite 1 pra finalizar.";
-	cin >> apagar;
-	system("cls");
+	do {
+		cout << "       Ensira Dados Da Viagem\n\n";
+		cout << "Entre Local De Partida:";
+		cin >> p;
+		cout << "Entre Local De Destino:";
+		cin >> d;
+			
 	
-	ub3.setinserirLocalDePartida();
-	ub3.setinserirLocalDeDestino();
-	ub3.mostarFormaPagamento();
-	cin >> pag;
-	ub3.setescolherFormaDePagamento(pag);
-	ub3.setvalorMinimoCobradoPorViagem();
-	ub3.mostrarInformacaoMotorista();
-	cout << "\nDigite 1 pra finalizar.";
-	cin >> apagar;
-	system("cls");	
+		Uber ub2(p,d);
+		system("cls");
 	
-	ub3.getnumeroDeViagens();
+		ub2.mostarFormaPagamento();
+		cin >> pag;
+		system("cls");
+		
+		
+		ub2.mostarTipo();
+		cin >> tipo;
+		system("cls");
+		
+		
+		ub2.mostrarSexoMotorista();
+		cin >> sex;
+		system("cls");
+		
+		cout << "\n\n\n\n\n\n\n                 Procurando Motorista...\n\n\n\n\n\n\n";
+		while(clock() - tempo < 7000){ 
+		}
+		system("cls");
+		
+		
+		cout <<"       INFORMACOES DA VIAGEM\n";
+		cout<< "----------------------------------------";
+		
+		ub2.setinserirLocalDePartida();
+		ub2.setinserirLocalDeDestino();
+		ub2.setescolherFormaDePagamento(pag);
+		ub2.valorMinimoCobradoPorViagem();
+		ub2.tipo(tipo);
+		ub2.mostrarInformacaoTipo();
+		ub2.setescolherSexoMotorista(sex);
+		
+		ub2.mostrarInformacaoMotorista();
+		cout << "\nDigite 0 pra finalizar.";
+		cout << "\nDigite 1 pra realizar outra viagem.\n\n";
+		//cout << "\nDigite 2 pra vizualizar suas viagens.";
+		
+		ub2.listarLocaisDePartida();
+		ub2.getnumeroDeViagens();
+		
+		ub2.info();
+		cin >> viagem;
+		system("cls");
+	
+	} while (viagem != 0);
+			
+		//	ub2.getnumeroDeViagens();
+			
+		//	cout << "\nDigite 0 pra Sair.";
+		//	cout << "\nDigite 1 pra realizar outra viagem.\n\n";
+		//	cin >> viagem;
+		
+		system("cls");
+		
+	
+		
+		cout << "\n\n\n\n\n\n\n         OBRIGADO POR VIAJAR COM A UBER\n\n\n\n\n\n\n";
+	delete [] uberPtr;
 	return 0;
 }
