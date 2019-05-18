@@ -7,7 +7,7 @@ TipoCarro::TipoCarro()
 }
 TipoCarro::TipoCarro(const string &tipo)
 {
-	
+	this->tipoUber = tipo;
 	
 }
 TipoCarro::TipoCarro(const TipoCarro &tip)

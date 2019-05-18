@@ -37,7 +37,7 @@ Uber::Uber(const Uber &ub)
 {
 	this->localDePartida = ub.localDePartida;
 	this->localDeDestino = ub.localDeDestino;
-	
+	this->nomeLocalPartida = ub.nomeLocalPartida;
 }
 
 Uber::~Uber()

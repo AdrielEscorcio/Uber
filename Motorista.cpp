@@ -9,7 +9,8 @@ Motorista::Motorista()
 
 Motorista::Motorista(const string &nome, const string &placa)
 {
-	
+	this->nome = nome;
+	this->numeroPlaca = placa;
 }
 
 Motorista::Motorista(const Motorista &mot)
