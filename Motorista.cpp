@@ -60,4 +60,6 @@ void Motorista::mostrarIformacaoMotorista() const
 void Motorista::info() const
 {
 	cout << "Mostra, recebe e seleciona o Motorista\n\n";
+	cout << "\nNome:"<<this->nome;
+    cout << "\nPlaca:"<<this->numeroPlaca<<"\n";
 }

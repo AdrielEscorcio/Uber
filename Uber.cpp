@@ -171,6 +171,9 @@ void Uber::info() const
 	cout << "-----------------------------------\n";
 	cout << "Recebe o Local de Partida e o Destino\n";
 	cout << "Mostra e Recebe a Forma de Pagamento\n\n";
+	
+	cout <<"\nLocal De Partida Escolhido: " << this->localDePartida;
+	cout << "\nLocal de Destino Escolhido: " << this->localDeDestino;
 
 	cout << "Informacoes da Classe Motorista\n";
 	cout << "-----------------------------------\n";

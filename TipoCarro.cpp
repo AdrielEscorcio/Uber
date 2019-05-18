@@ -49,4 +49,5 @@ void TipoCarro::mostrarInformacaoTipo ()  const
 void TipoCarro::info() const
 {
 	cout << "Mostra e recebe e selciona o Tipo de Uber\n\n";
+	cout << "\nTipo:" << this->tipoUber;
 }
