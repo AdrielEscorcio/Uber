@@ -8,14 +8,28 @@
 using std::string;
 using std::cout;
 using std::cin;
+using std::ostream;
 
 class Motorista 
 {
+	friend ostream &operator<<( ostream &, const Motorista & );
 	public:
 		Motorista();
 		Motorista(const string &,const string &);
 		Motorista(const Motorista &);
 		~Motorista();
+		
+		const Motorista &operator=( const Motorista &);
+		
+		bool operator==( const Motorista & ) const;
+		
+		bool operator!=( const Motorista &) const; 
+		
+		int &operator[]( int);
+		
+		const int &operator[](int) const; 
+		
+		bool operator<(const Motorista &) const;
 		
 		void mostrarSexoMotorista() const;
 		
@@ -28,7 +42,8 @@ class Motorista
 		
 		string nome;
     	string numeroPlaca;
-    	
+    	int *ptr;
+    	int tam;
     	const static int sexoMotorista = 2;
     	const static string sexoMot[sexoMotorista];
 };

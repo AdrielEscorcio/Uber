@@ -2,8 +2,10 @@
 
 int main(int argc, char** argv) {
 	string p,d;
-	int pag, apagar, sex, tipo, viagem = 0, verviagens = 0;
+	int pag, sex, tipo, viagem = 0;
+	
 	int tempo = clock();
+	
 	Uber *uberPtr;
 	uberPtr = new Uber;
 	
@@ -19,7 +21,7 @@ int main(int argc, char** argv) {
 	cin >> viagem;
 	system("cls");
 	
-	do {
+	
 		cout << "       Ensira Dados Da Viagem\n\n";
 		cout << "Entre Local De Partida:";
 		cin >> p;
@@ -27,7 +29,7 @@ int main(int argc, char** argv) {
 		cin >> d;
 			
 	
-		Uber ub2(p,d);
+		Uber ub1,ub2(p,d),ub3(ub2);
 		system("cls");
 	
 		ub2.mostarFormaPagamento();
@@ -53,33 +55,43 @@ int main(int argc, char** argv) {
 		cout <<"       INFORMACOES DA VIAGEM\n";
 		cout<< "----------------------------------------";
 		
-		ub2.setinserirLocalDePartida();
-		ub2.setinserirLocalDeDestino();
+	//	ub2.setinserirLocalDePartida();
+	//	ub2.setinserirLocalDeDestino();
+		cout << ub2;
 		ub2.setescolherFormaDePagamento(pag);
 		ub2.valorMinimoCobradoPorViagem();
 		ub2.tipo(tipo);
 		ub2.mostrarInformacaoTipo();
 		ub2.setescolherSexoMotorista(sex);
-		
 		ub2.mostrarInformacaoMotorista();
+
 		cout << "\nDigite 0 pra finalizar.";
 		cout << "\nDigite 1 pra realizar outra viagem.\n\n";
+		
+		if (!(ub3 == ub2))
+		{
+			cout << "iguais.";
+		} 
+		if (ub1 != ub2)
+		{
+			cout << "Diferentes";
+		}
 		//cout << "\nDigite 2 pra vizualizar suas viagens.";
 		
-		ub2.listarLocaisDePartida();
-		ub2.getnumeroDeViagens();
+	//	ub2.listarLocaisDePartida();
+	
+		cout << ub1;
 		
-		ub2.info();
+		ub3.getnumeroDeViagens();
+		
+		
+		
+		
 		cin >> viagem;
 		system("cls");
 	
-	} while (viagem != 0);
-			
-		//	ub2.getnumeroDeViagens();
-			
-		//	cout << "\nDigite 0 pra Sair.";
-		//	cout << "\nDigite 1 pra realizar outra viagem.\n\n";
-		//	cin >> viagem;
+	
+	
 		
 		system("cls");
 		

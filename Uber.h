@@ -8,21 +8,36 @@
 
 
 #include "Motorista.h"
-#include "TipoCarro.h"
+#include "Carro.h"
 
 using std::string;
 using std::cout;
 using std::cin;
-
+using std::ostream;
 
 class Uber
 {
+	friend ostream &operator<<( ostream &, const Uber &);
+
+	
 	public:
 		Uber();
 		Uber(const string &, const string &);
 		Uber(const Uber &);
 		~Uber();
+			
+		const Uber &operator=( const Uber &);
 		
+		bool operator==( const Uber & ) const;
+		
+		bool operator!=( const Uber &) const;
+		
+		int &operator[]( int);
+		
+		const int &operator[](int) const;  
+		
+		bool operator<(const Uber &) const;
+
 		void setinserirLocalDePartida() const;
 		   
     	void setinserirLocalDeDestino() const;
@@ -77,7 +92,7 @@ class Uber
     	const static string pag[quantFormaPagamento];
     	
     	Motorista inforMotorista;
-    	TipoCarro selecionarTipo;
+    	Carro selecionarTipo;
     	
     	
 };

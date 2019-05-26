@@ -38,6 +38,12 @@ Uber::Uber(const Uber &ub)
 	this->localDePartida = ub.localDePartida;
 	this->localDeDestino = ub.localDeDestino;
 	this->nomeLocalPartida = ub.nomeLocalPartida;
+	
+	nomeLocalPartida  = new string[ quantPartidas]; 
+	for( int i = 0; i < quantPartidas; i++ ) 
+	   nomeLocalPartida[ i ] = ub[i];
+	   
+	quantViagens++;
 }
 
 Uber::~Uber()
@@ -81,7 +87,7 @@ void Uber::listarLocaisDePartida() const
 	//for (int i = 0; i <= quantPartidas; i++ )
 	int i=0;
 	cout <<"  Suas Viagens\n";
-	while(i<quantPartidas)
+	while(i<=quantPartidas-1)
 	{
 		cout << i+1 <<" Viagem\n";
 		cout <<"Partida: " <<nomeLocalPartida[i]<<"\n";
@@ -158,6 +164,7 @@ void Uber::mostrarInformacaoMotorista ()  const
     cout << "\n\n       INFORMACOES DO MOTORISTA";
     cout<< "\n----------------------------------------";
     inforMotorista.mostrarIformacaoMotorista();
+    
 }
 
 int Uber::getnumeroDeViagens()
@@ -165,21 +172,69 @@ int Uber::getnumeroDeViagens()
 	cout << "\n\nQuantidade de Viagens Realizadas:" << quantViagens<<"\n";
 }
 
-void Uber::info() const
+ostream &operator<<( ostream &out, const Uber &ub)
 {
-	cout << "\n\nInformacoes da Classe Principal\n";
-	cout << "-----------------------------------\n";
-	cout << "Recebe o Local de Partida e o Destino\n";
-	cout << "Mostra e Recebe a Forma de Pagamento\n\n";
+	//cout << "\n\nInformacoes da Classe Principal\n";
+	//out << "-----------------------------------\n";
+	//cout << "Recebe o Local de Partida e o Destino\n";
+	//cout << "Mostra e Recebe a Forma de Pagamento\n\n";
 	
-	cout <<"\nLocal De Partida Escolhido: " << this->localDePartida;
-	cout << "\nLocal de Destino Escolhido: " << this->localDeDestino;
+	out <<"\nLocal De Partida Escolhido: " << ub.localDePartida << "\n"
+	<< "Local de Destino Escolhido: " << ub.localDeDestino;
 
-	cout << "Informacoes da Classe Motorista\n";
-	cout << "-----------------------------------\n";
-	inforMotorista.info();
-	cout << "Informacoes da Classe TipoCarro\n";
-	cout << "-----------------------------------\n";
-	selecionarTipo.info();
+	//cout << "Informacoes da Classe Motorista\n";
+	//cout << "-----------------------------------\n";
+	
+	//inforMotorista.info();
+	//cout << "Informacoes da Classe TipoCarro\n";
+	//out << "-----------------------------------\n";
+	//selecionarTipo.info();
+	return out;
+}
+
+const Uber& Uber::operator=( const Uber &ub)
+{
+	if(&ub != this){
+	
+	
+		if (quantPartidas != ub.quantPartidas){
+			delete [] nomeLocalPartida;
+			quantPartidas = ub.quantPartidas;
+			nomeLocalPartida = new string[quantPartidas];
+		}
+				
+		for (int i=0; i < quantPartidas; i++)
+			nomeLocalPartida[i] = ub.nomeLocalPartida[i];
+	}	
+	return *this;
+}
+
+bool Uber::operator==( const Uber &ub) const 
+{
+	if( quantPartidas != ub.quantPartidas) 
+		return false;   
+	
+	for( int i = 0; i <quantPartidas; i++ )
+		if( nomeLocalPartida[ i ] != ub.nomeLocalPartida[ i ] ) 
+			return false; 
+	
+	
+	return true;		
+}
+
+bool Uber::operator!=( const Uber &ub) const 
+{    
+	 return! ( *this== ub);
+}
+
+int &Uber::operator[]( int)
+{
 	
 }
+
+const int &Uber::operator[](int) const
+{
+	
+}
+
+bool operator<(const Uber &, const Uber &);
