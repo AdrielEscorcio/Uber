@@ -39,8 +39,7 @@ class Carro
 		
 	private:
 		string tipoUber;
-		int tam;
-		int *ptr;
+		
 		
 		const static int quantTipo = 2;
     	const static string tipos[quantTipo];

@@ -8,11 +8,7 @@ Carro::Carro()
 Carro::Carro(const string &tipo)
 {
 	this->tipoUber = tipo;
-	
-	tam = 10 ;
-	ptr = new int[ tam ]; 
-	for ( int i = 0; i < tam; i++ )
-	  	ptr[ i ] = 0;  
+	  
 	 
 
 	
@@ -21,13 +17,11 @@ Carro::Carro(const Carro &tip)
 {
 	this->tipoUber = tip.tipoUber;
 	
-	ptr= new int[tam]; 
-	for( int i = 0; i < tam; i++ ) 
-		ptr[ i ] = tip.ptr[i];
+	
 }
 Carro::~Carro()
 {
-	delete [] ptr;
+	
 }
 
 const string Carro::tipos[quantTipo] = {"Uber x","Uber Select"};
@@ -66,33 +60,23 @@ void Carro::info() const
 ostream &operator<<( ostream &out, const Carro &car )
 {
 	out << "Tipo de uber: " << car.tipoUber;
+	
+	return out;
 }
 const Carro& Carro::operator=( const Carro &car)
 {
-	if(&car != this){
-	
-	
-		if (tam != car.tam){
-			delete [] ptr ;
-			tam = car.tam;
-			ptr = new int[tam];
-		}
-				
-		for (int i=0; i < tam; i++)
-			ptr[i] = car.ptr[i];
-	}	
+	if(&mot != this)
+	{
+		this->tipoUber = car.tipoUber;	
+	}
 	return *this;
 }
 
 bool Carro::operator==( const Carro &car) const 
 {
-	if( tam != car.tam) 
-		return false;   
-	
-	for( int i = 0; i <tam; i++ )
-		if( ptr[ i ] != car.ptr[ i ] ) 
-			return false; 
-	
+	if(this->tipoUber != car.tipoUber)
+		return false;	
+
 	
 	return true;		
 }

@@ -174,29 +174,36 @@ int Uber::getnumeroDeViagens()
 
 ostream &operator<<( ostream &out, const Uber &ub)
 {
-	//cout << "\n\nInformacoes da Classe Principal\n";
-	//out << "-----------------------------------\n";
-	//cout << "Recebe o Local de Partida e o Destino\n";
-	//cout << "Mostra e Recebe a Forma de Pagamento\n\n";
+	cout << "\n\nInformacoes da Classe Principal\n";
+	cout << "-----------------------------------\n";
+	cout << "Recebe o Local de Partida e o Destino\n";
+	cout << "Mostra e Recebe a Forma de Pagamento\n\n";
 	
 	out <<"\nLocal De Partida Escolhido: " << ub.localDePartida << "\n"
 	<< "Local de Destino Escolhido: " << ub.localDeDestino;
+	 
 
-	//cout << "Informacoes da Classe Motorista\n";
-	//cout << "-----------------------------------\n";
+	cout << "Informacoes da Classe Motorista\n";
+	cout << "-----------------------------------\n";
 	
-	//inforMotorista.info();
-	//cout << "Informacoes da Classe TipoCarro\n";
-	//out << "-----------------------------------\n";
-	//selecionarTipo.info();
+	
+	ub.inforMotorista.info();
+	cout << "Informacoes da Classe TipoCarro\n";
+	cout << "-----------------------------------\n";
+	ub.selecionarTipo.info();
+	
+	
 	return out;
 }
 
 const Uber& Uber::operator=( const Uber &ub)
 {
+	
 	if(&ub != this){
 	
-	
+		this->localDeDestino = ub.localDeDestino;
+		this->localDePartida = ub.localDePartida;
+		 
 		if (quantPartidas != ub.quantPartidas){
 			delete [] nomeLocalPartida;
 			quantPartidas = ub.quantPartidas;
@@ -205,12 +212,20 @@ const Uber& Uber::operator=( const Uber &ub)
 				
 		for (int i=0; i < quantPartidas; i++)
 			nomeLocalPartida[i] = ub.nomeLocalPartida[i];
-	}	
+	}
+		ub.inforMotorista.operator=();
+		ub.selecionarTipo.operator=();
 	return *this;
 }
 
 bool Uber::operator==( const Uber &ub) const 
 {
+	if (this->localDeDestino != ub.localDeDestino)
+		return false;
+	
+	if (this->localDePartida != ub.localDePartida)
+		return false;
+		
 	if( quantPartidas != ub.quantPartidas) 
 		return false;   
 	
@@ -218,23 +233,45 @@ bool Uber::operator==( const Uber &ub) const
 		if( nomeLocalPartida[ i ] != ub.nomeLocalPartida[ i ] ) 
 			return false; 
 	
-	
+	ub.inforMotorista.operator==();
+	ub.selecionarTipo.operator==();
 	return true;		
 }
 
 bool Uber::operator!=( const Uber &ub) const 
 {    
+	ub.selecionarTipo.operator!=();
+	ub.inforMotorista.operator!=();
 	 return! ( *this== ub);
 }
 
-int &Uber::operator[]( int)
+string &Uber::operator[]( int pos)
 {
+	if (pos < 0 || pos >= quantPartidas)
+	{
+		cout << "Posição invalida";
+		
+	} else {
+		return this->nomeLocalPartida[pos];
+	}
 	
 }
 
-const int &Uber::operator[](int) const
+const string &Uber::operator[](int pos) const
 {
-	
+	if (pos < 0 || pos >= quantPartidas)
+	{
+		cout << "Posição invalida";
+		
+	} else {
+		return this->nomeLocalPartida[pos];
+	}
 }
 
-bool operator<(const Uber &, const Uber &);
+bool operator<( const Uber &ub1)
+{
+	if(this->valorMinimoDeViagem < ub.valorMinimoDeViagem)
+	return true;
+	
+	return false; 
+}

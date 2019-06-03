@@ -42,8 +42,7 @@ class Motorista
 		
 		string nome;
     	string numeroPlaca;
-    	int *ptr;
-    	int tam;
+    
     	const static int sexoMotorista = 2;
     	const static string sexoMot[sexoMotorista];
 };

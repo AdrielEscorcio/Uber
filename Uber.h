@@ -32,9 +32,9 @@ class Uber
 		
 		bool operator!=( const Uber &) const;
 		
-		int &operator[]( int);
+		string &operator[]( int);
 		
-		const int &operator[](int) const;  
+		const string &operator[](int) const;  
 		
 		bool operator<(const Uber &) const;
 
