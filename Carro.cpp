@@ -46,16 +46,16 @@ void Carro::tipo (int *escolhe)
 	}
 }
 
-void Carro::mostrarInformacaoTipo ()  const
+/*void Carro::mostrarInformacaoTipo ()  const
 {
     cout << "\nTipo:" << this->tipoUber;
-}
+}*/
 
-void Carro::info() const
+/*void Carro::info() const
 {
 	cout << "Mostra e recebe e selciona o Tipo de Uber\n\n";
 	cout << "\nTipo:" << this->tipoUber;
-}
+}*/
 
 ostream &operator<<( ostream &out, const Carro &car )
 {
@@ -65,7 +65,7 @@ ostream &operator<<( ostream &out, const Carro &car )
 }
 const Carro& Carro::operator=( const Carro &car)
 {
-	if(&mot != this)
+	if(&car != this)
 	{
 		this->tipoUber = car.tipoUber;	
 	}

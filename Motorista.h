@@ -37,7 +37,7 @@ class Motorista
 		
 		void mostrarIformacaoMotorista() const;
 		
-		void info() const;
+	
 	private:
 		
 		string nome;

@@ -34,8 +34,8 @@ class Carro
 		
 		void mostrarTipo() const;
 		void tipo (int*);
-		void mostrarInformacaoTipo() const;
-		void info() const;
+		//void mostrarInformacaoTipo() const;
+		//void info() const;
 		
 	private:
 		string tipoUber;

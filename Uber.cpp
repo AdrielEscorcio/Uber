@@ -1,42 +1,30 @@
 #include "Uber.h"
-
 int Uber::quantViagens = 0;
-
 
 Uber::Uber()
 {
-	this->localDePartida = "Desconhecido";
-	this->localDeDestino = "Desconhecido";
+	
 }
 
-Uber::Uber(const string &Partida, const string &Destino)
+Uber::Uber(const string &localDePartida, const string &localDeDestino, int pag) : Mobilidade (localDeDestino, localDePartida), Pagamento (pag) 
 {
-	
 	if (quantViagens == 0)
 	{
 		quantPartidas = 0;
 		++quantPartidas;
 		nomeLocalPartida = new string[quantPartidas];
-		cadastarPartida(Partida);
+		cadastarPartida(localDePartida);
 		
 	} else {
 		
-		adicionarPartida(Partida);
+		adicionarPartida(localDePartida);
 	}
 	
-	this->localDePartida = Partida; 
-	this->localDeDestino = Destino;
-	
-	
-	
-	quantViagens++;
-	
+	quantViagens++;	
 }
 
-Uber::Uber(const Uber &ub)
+Uber::Uber(const Uber &ub) : Mobilidade (static_cast< Mobilidade >( ub ) ) : Pagamento  (static_cast< Pagamento >( ub ) )
 {
-	this->localDePartida = ub.localDePartida;
-	this->localDeDestino = ub.localDeDestino;
 	this->nomeLocalPartida = ub.nomeLocalPartida;
 	
 	nomeLocalPartida  = new string[ quantPartidas]; 
@@ -52,7 +40,6 @@ Uber::~Uber()
 	
 }
 
-const string Uber::pag[quantFormaPagamento] = {"Dinheiro","Credito","Debito"};
 
 void Uber::cadastarPartida(const string &partida)
 {
@@ -95,40 +82,11 @@ void Uber::listarLocaisDePartida() const
 	}
 }
 
-void Uber::setinserirLocalDePartida() const
+/*void  Uber::mostarFormaPagamento() const 
 {
-	
-	cout <<"\nLocal De Partida Escolhido: " << this->localDePartida;
-}
+	Pagamento::mostarFormaPagamento();
+}*/
 
-void Uber::setinserirLocalDeDestino() const
-{
-	cout << "\nLocal de Destino Escolhido: " << this->localDeDestino;
-}
-
-void Uber::mostarFormaPagamento() const
-{
-	cout << "       Entre com a forma de Pagamento\n\n";
-	for(int i=0; i < 3; i++)
-		cout<< "["<<i+1<<"]"<<pag[i] << "\n";
-	
-}
-
-void Uber::setescolherFormaDePagamento(int formaDePagamento)
-{
-    for (int i = 0; i < quantFormaPagamento; i++ )
-    {
-    	if (i == formaDePagamento-1)
-    	{
-    		cout <<"\n\nForma de Pagamento:"<<pag[i];
-    	}
-	}
-}
-
-void Uber::valorMinimoCobradoPorViagem() const
-{
-	cout << "\nValor Minimo cobrado por viagem: R$ " << valorMinimoDeViagem;
-}
 
 void Uber::mostarTipo() const
 {
@@ -139,12 +97,6 @@ void Uber::tipo (int escolhe)
 	selecionarTipo.tipo(&escolhe);
 }
 
-void Uber::mostrarInformacaoTipo ()  const
-{
-    cout << "\n\n       TIPO SELECIONADO";
-    cout<< "\n---------------------------------------";
-	selecionarTipo.mostrarInformacaoTipo();
-}
 
 void Uber::mostrarSexoMotorista() const
 {
@@ -159,14 +111,6 @@ void Uber::setescolherSexoMotorista(int escolhe)
     
 }
 
-void Uber::mostrarInformacaoMotorista ()  const
-{
-    cout << "\n\n       INFORMACOES DO MOTORISTA";
-    cout<< "\n----------------------------------------";
-    inforMotorista.mostrarIformacaoMotorista();
-    
-}
-
 int Uber::getnumeroDeViagens()
 {
 	cout << "\n\nQuantidade de Viagens Realizadas:" << quantViagens<<"\n";
@@ -174,35 +118,28 @@ int Uber::getnumeroDeViagens()
 
 ostream &operator<<( ostream &out, const Uber &ub)
 {
-	cout << "\n\nInformacoes da Classe Principal\n";
-	cout << "-----------------------------------\n";
-	cout << "Recebe o Local de Partida e o Destino\n";
-	cout << "Mostra e Recebe a Forma de Pagamento\n\n";
+	out <<"       INFORMACOES DA VIAGEM\n";
+	out << "-----------------------------------\n";
 	
-	out <<"\nLocal De Partida Escolhido: " << ub.localDePartida << "\n"
-	<< "Local de Destino Escolhido: " << ub.localDeDestino;
-	 
-
-	cout << "Informacoes da Classe Motorista\n";
-	cout << "-----------------------------------\n";
+	out << static_cast <Mobilidade>(ub);
+	out << static_cast <Pagamento>(ub);
+	out << "\nValor Minimo cobrado por viagem R$ " << ub.valorMinimoDeViagem; 
+	out << "\n\nInformacoes da Classe Motorista\n";
+	out << "-----------------------------------\n";
 	
-	
-	ub.inforMotorista.info();
-	cout << "Informacoes da Classe TipoCarro\n";
-	cout << "-----------------------------------\n";
-	ub.selecionarTipo.info();
-	
-	
+//	out << static_cast <Motorista>(ub);
+	out << "\n\nInformacoes da Classe TipoCarro\n";
+	out << "-----------------------------------\n";
+	//ub.selecionarTipo.info();
 	return out;
 }
 
 const Uber& Uber::operator=( const Uber &ub)
 {
-	
 	if(&ub != this){
 	
-		this->localDeDestino = ub.localDeDestino;
-		this->localDePartida = ub.localDePartida;
+		*static_cast< Mobilidade * >( this ) = static_cast< Mobilidade >( ub );
+		*static_cast< Pagamento * >( this ) = static_cast< Pagamento >( ub );	
 		 
 		if (quantPartidas != ub.quantPartidas){
 			delete [] nomeLocalPartida;
@@ -213,18 +150,19 @@ const Uber& Uber::operator=( const Uber &ub)
 		for (int i=0; i < quantPartidas; i++)
 			nomeLocalPartida[i] = ub.nomeLocalPartida[i];
 	}
-		ub.inforMotorista.operator=();
-		ub.selecionarTipo.operator=();
+	
+	
 	return *this;
 }
 
 bool Uber::operator==( const Uber &ub) const 
 {
-	if (this->localDeDestino != ub.localDeDestino)
-		return false;
+	if( static_cast<Mobilidade>(*this) != static_cast<Mobilidade>(fem) )
+			return false;
 	
-	if (this->localDePartida != ub.localDePartida)
-		return false;
+	if( static_cast<Pagamento>(*this) != static_cast<Pagamento>(fem) )
+			return false;
+	
 		
 	if( quantPartidas != ub.quantPartidas) 
 		return false;   
@@ -233,15 +171,13 @@ bool Uber::operator==( const Uber &ub) const
 		if( nomeLocalPartida[ i ] != ub.nomeLocalPartida[ i ] ) 
 			return false; 
 	
-	ub.inforMotorista.operator==();
-	ub.selecionarTipo.operator==();
+	
 	return true;		
 }
 
 bool Uber::operator!=( const Uber &ub) const 
-{    
-	ub.selecionarTipo.operator!=();
-	ub.inforMotorista.operator!=();
+{    	
+	 
 	 return! ( *this== ub);
 }
 
@@ -268,10 +204,11 @@ const string &Uber::operator[](int pos) const
 	}
 }
 
-bool operator<( const Uber &ub1)
-{
-	if(this->valorMinimoDeViagem < ub.valorMinimoDeViagem)
-	return true;
+//bool &Uber::operator<( const Uber &ub1)
+//{
+
+//	if(this->valorMinimoDeViagem < ub1.valorMinimoDeViagem)
+//		return true;
 	
-	return false; 
-}
+//	return false; 
+//}

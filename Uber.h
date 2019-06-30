@@ -6,23 +6,21 @@
 #include <ctime>
 
 
-
+#include "Pagamento.h"
 #include "Motorista.h"
 #include "Carro.h"
-
+#include "Mobilidade.h"
 using std::string;
 using std::cout;
 using std::cin;
 using std::ostream;
 
-class Uber
+class Uber : public Mobilidade, Pagamento
 {
 	friend ostream &operator<<( ostream &, const Uber &);
-
-	
 	public:
 		Uber();
-		Uber(const string &, const string &);
+		Uber(const string &, const string &, int);
 		Uber(const Uber &);
 		~Uber();
 			
@@ -38,29 +36,24 @@ class Uber
 		
 		bool operator<(const Uber &) const;
 
-		void setinserirLocalDePartida() const;
-		   
-    	void setinserirLocalDeDestino() const;
     	
-    	void setinicializarFormaDePagamento();
+    	//void setinicializarFormaDePagamento();
     
-	    void mostarFormaPagamento() const;
+	   //virtual void mostarFormaPagamento() const;
 	    
-	    void setescolherFormaDePagamento(int);
-    	
-    	void valorMinimoCobradoPorViagem() const;
+	   //virtual void setescolherFormaDePagamento(int);
     	
     	void mostarTipo() const;
     	
     	void tipo (int );
     	
-    	void mostrarInformacaoTipo ()  const;
+    	//void mostrarInformacaoTipo ()  const;
     	
     	void mostrarSexoMotorista() const;
     	
     	void setescolherSexoMotorista(int );
     	
-    	void mostrarInformacaoMotorista() const;
+    	//void mostrarInformacaoMotorista() const;
     	
     	
     	static int getnumeroDeViagens();
@@ -71,13 +64,10 @@ class Uber
     	
     	void adicionarPartida (const string &);
     	
-    	void info() const;
+    	
     
     	
 	private:
-		
-		string localDeDestino;
-    	string localDePartida;
     	
     	//string *nomeLocalDestino;
     	string *nomeLocalPartida;
@@ -88,8 +78,7 @@ class Uber
     	
     	const static int valorMinimoDeViagem = 5.00;
     	
-    	const static int quantFormaPagamento = 3;
-    	const static string pag[quantFormaPagamento];
+    	
     	
     	Motorista inforMotorista;
     	Carro selecionarTipo;
