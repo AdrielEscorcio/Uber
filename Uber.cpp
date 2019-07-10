@@ -6,7 +6,7 @@ Uber::Uber()
 	
 }
 
-Uber::Uber(const string &localDePartida, const string &localDeDestino, int pag) : Mobilidade (localDeDestino, localDePartida), Pagamento (pag) 
+Uber::Uber(const string &localDePartida, const string &localDeDestino, int pag) : Mobilidade (localDeDestino, localDePartida), Pagamento (pag)
 {
 	if (quantViagens == 0)
 	{
@@ -23,7 +23,7 @@ Uber::Uber(const string &localDePartida, const string &localDeDestino, int pag) 
 	quantViagens++;	
 }
 
-Uber::Uber(const Uber &ub) : Mobilidade (static_cast< Mobilidade >( ub ) ) : Pagamento  (static_cast< Pagamento >( ub ) )
+Uber::Uber(const Uber &ub) : Mobilidade (static_cast< Mobilidade >(ub) ), Pagamento  (static_cast < Pagamento >( ub ) )
 {
 	this->nomeLocalPartida = ub.nomeLocalPartida;
 	
@@ -115,6 +115,17 @@ int Uber::getnumeroDeViagens()
 {
 	cout << "\n\nQuantidade de Viagens Realizadas:" << quantViagens<<"\n";
 }
+void Uber::abertura(){
+
+
+	 cout <<"Bem vindo ao Uber\n";
+	
+}
+
+void Uber::fechamento(){
+		
+	 cout << "Obrigado por viajar com o Uber";
+}
 
 ostream &operator<<( ostream &out, const Uber &ub)
 {
@@ -157,10 +168,10 @@ const Uber& Uber::operator=( const Uber &ub)
 
 bool Uber::operator==( const Uber &ub) const 
 {
-	if( static_cast<Mobilidade>(*this) != static_cast<Mobilidade>(fem) )
+	if( static_cast<Mobilidade>(*this) != static_cast<Mobilidade>(ub) )
 			return false;
 	
-	if( static_cast<Pagamento>(*this) != static_cast<Pagamento>(fem) )
+	if( static_cast<Pagamento>(*this) != static_cast<Pagamento>(ub) )
 			return false;
 	
 		

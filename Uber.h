@@ -5,7 +5,7 @@
 #include <string>
 #include <ctime>
 
-
+#include "Mensagens.h"
 #include "Pagamento.h"
 #include "Motorista.h"
 #include "Carro.h"
@@ -15,7 +15,7 @@ using std::cout;
 using std::cin;
 using std::ostream;
 
-class Uber : public Mobilidade, Pagamento
+class Uber : public Mensagens, Mobilidade, Pagamento
 {
 	friend ostream &operator<<( ostream &, const Uber &);
 	public:
@@ -23,6 +23,9 @@ class Uber : public Mobilidade, Pagamento
 		Uber(const string &, const string &, int);
 		Uber(const Uber &);
 		~Uber();
+		
+		void abertura();
+		void fechamento();
 			
 		const Uber &operator=( const Uber &);
 		
@@ -69,10 +72,9 @@ class Uber : public Mobilidade, Pagamento
     	
 	private:
     	
-    	//string *nomeLocalDestino;
     	string *nomeLocalPartida;
     	int quantPartidas;
-    	//int quantDestino;
+    	
     	
     	static int quantViagens;
     	

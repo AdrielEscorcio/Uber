@@ -2,22 +2,34 @@
 #include "Pop.h"
 #include "Femitaxi.h"
 
+void printMensagem( Mensagens *m){
+	m->abertura();
+	m->fechamento();			
+}
+
 int main(int argc, char** argv) {
-	string p,d;
+	string p,d; 
 	int pag, sex,sexo, idade, tipo, viagem = 0;
 	
 	int tempo = clock();
 	
-	Uber *uberPtr;
-	uberPtr = new Uber;
-	
+	Mensagens *uberPtr = new Uber, *po = new Pop, *fe = new Femitaxi;
+							
 	
 	cout << "\n\n\n\n\n\n\n                  CARREGANDO...\n\n\n\n\n\n\n";
 	while(clock() - tempo < 6000){ 
 	}
 	system("cls");
 	
-	cout << "\n\n\n\n\n\n\n                 BEM VINDO A UBER\n\n\n\n\n\n\n";
+	uberPtr->abertura();
+	po->abertura();
+	fe->abertura();
+	//uber u;
+	//Pop po;
+	
+	//printMensagem(&u);
+	//printMensagem(&po);
+	//cout << "\n\n\n\n\n\n\n                 BEM VINDO A UBER\n\n\n\n\n\n\n";
 
 	cout << "\n\n         Digite 1 pra realizar sua viagem.\n";
 	cin >> viagem;

@@ -12,6 +12,9 @@ class Pool : public Uber
 		Pool(const Pool &);
 		~Pool();
 		
+		void abertura();
+		void fechamento();
+		
 		const Pool &operator=( const Pool &);
 		
 		bool operator==( const Pool & ) const;

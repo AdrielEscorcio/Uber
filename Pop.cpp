@@ -13,7 +13,7 @@ Pop::Pop(const string &localDePartida, const string &localDeDestino, int pag) : 
 	quantViagens++;
 }
 
-Pop::Pop(const Pop &po) : Mobilidade (static_cast< Mobilidade >( po ) ) : Pagamento  (static_cast<  Pagamento  >( po ) )
+Pop::Pop(const Pop &po) : Mobilidade (static_cast< Mobilidade >( po ) ), Pagamento  (static_cast<  Pagamento  >( po ) )
 {
 	
 	quantViagens++;
@@ -45,6 +45,17 @@ void Pop::escolherTipo (int escolhe)
 	}
 }
 
+void Pop::abertura(){
+	
+	 cout <<"Bem vindo ao Pop\n";
+	
+}
+
+void Pop::fechamento(){
+		
+	 cout << "Obrigado por viajar com o Pop";
+}
+
 ostream &operator<<( ostream &out, const Pop &po)
 {
 	cout << "\n\nInformacoes da Viagem\n";
@@ -68,10 +79,10 @@ const Pop& Pop::operator=( const Pop &po)
 }
 bool Pop::operator==( const Pop &po) const 
 {
-	if( static_cast<Mobilidade>(*this) != static_cast<Mobilidade>(fem) )
+	if( static_cast<Mobilidade>(*this) != static_cast<Mobilidade>(po) )
 			return false;
 	
-	if( static_cast<Pagamento>(*this) != static_cast<Pagamento>(fem) )
+	if( static_cast<Pagamento>(*this) != static_cast<Pagamento>(po) )
 			return false;
 	
 	if (this->tipoPop != po.tipoPop)

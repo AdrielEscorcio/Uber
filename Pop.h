@@ -3,8 +3,10 @@
 
 #include "Mobilidade.h"
 #include "Pagamento.h"
+#include "Mensagens.h"
+using std::string;
 
-class Pop : public Mobilidade, Pagamento
+class Pop : public Mensagens,Mobilidade, Pagamento
 {
 	friend ostream &operator<<( ostream &, const Pop &);
 	public:
@@ -12,6 +14,9 @@ class Pop : public Mobilidade, Pagamento
 		Pop(const string &, const string &, int);
 		Pop(const Pop &);
 		~Pop();
+		
+		void abertura();
+		void fechamento();
 		
 		const Pop &operator=( const Pop &);
 		bool operator==( const Pop & ) const;

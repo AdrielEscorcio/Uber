@@ -2,7 +2,7 @@
 
 Pool::Pool()
 {
-	this->viajantes = 1;
+	this->viajantes = 0;
 }
 
 Pool::Pool(const string &localDePartida, const string &localDeDestino, int pag, int viajantes) : Uber (localDePartida,localDeDestino, pag)
@@ -19,6 +19,18 @@ Pool::Pool(const Pool &p) : Uber (static_cast< Uber >( p ))
 Pool::~Pool()
 {
 	
+}
+
+void Pool::abertura(){
+
+
+	 cout <<"Bem vindo ao Uber Pool\n";
+	
+}
+
+void Pool::fechamento(){
+		
+	 cout << "Obrigado por viajar com o Uber Pool";
 }
 
 

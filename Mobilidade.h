@@ -18,6 +18,8 @@ class Mobilidade
 		Mobilidade(const Mobilidade &);
 		virtual ~Mobilidade();
 		
+		
+		
 		const Mobilidade &operator=( const Mobilidade &);
 		bool operator==( const Mobilidade & ) const;
 		bool operator!=( const Mobilidade &) const;

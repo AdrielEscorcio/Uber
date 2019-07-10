@@ -15,7 +15,7 @@ Femitaxi::Femitaxi(const string &sex, int idade, const string &localDePartida, c
 	this->idade = idade;	
 
 }
-Femitaxi::Femitaxi(const Femitaxi &fem) : Mobilidade (static_cast< Mobilidade >( fem ) ) : Pagamento  (static_cast<  Pagamento  >( fem ) )
+Femitaxi::Femitaxi(const Femitaxi &fem) : Mobilidade (static_cast< Mobilidade >( fem ) ), Pagamento  (static_cast<  Pagamento  >( fem ) )
 {
 	this->sexo = fem.sexo;
 	this->idade = fem.idade;
@@ -24,6 +24,16 @@ Femitaxi::Femitaxi(const Femitaxi &fem) : Mobilidade (static_cast< Mobilidade >(
 }
 Femitaxi::~Femitaxi()
 {
+}
+void Femitaxi::abertura(){
+
+	 cout <<"Bem vindo ao Femitaxi\n";
+	
+}
+
+void Femitaxi::fechamento(){
+		
+	 cout << "Obrigado por viajar com o Femitaxi";
 }
 
 ostream &operator<<( ostream &out, const Femitaxi &fem)

@@ -3,8 +3,9 @@
 
 #include "Mobilidade.h"
 #include "Pagamento.h"
+#include "Mensagens.h"
 
-class Femitaxi : public Mobilidade, Pagamento
+class Femitaxi : public Mensagens, Mobilidade, Pagamento
 {
 	friend ostream &operator<<( ostream &, const Femitaxi &);
 	public:
@@ -12,6 +13,9 @@ class Femitaxi : public Mobilidade, Pagamento
 		Femitaxi(const string &, int, const string &, const string &, int);
 		Femitaxi(const Femitaxi &);
 		~Femitaxi();
+		
+		void abertura();
+		void fechamento();
 		
 		const Femitaxi &operator=( const Femitaxi &);
 		bool operator==( const Femitaxi & ) const;
